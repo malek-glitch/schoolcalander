@@ -20,6 +20,7 @@ public class SessionController {
     @PostMapping
     public ResponseEntity<SessionDto> createSession(@RequestBody SessionDto session) {
         SessionDto created = sessionService.create(session);
+        System.out.println("created session: " + created);
         return ResponseEntity.ok(created);
     }
 }

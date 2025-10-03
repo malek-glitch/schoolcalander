@@ -19,6 +19,7 @@ public class TeacherService {
 
 
     final private TeacherRepository teacherRepo;
+    final private PasswordEncoder passwordEncoder;
 
 
 
@@ -36,7 +37,7 @@ public class TeacherService {
 
     public TeacherDto save(TeacherDto teacher) {
         Teacher entity = new Teacher(teacher);
-        String encode = new BCryptPasswordEncoder().encode(teacher.password());
+        String encode = passwordEncoder.encode(entity.password());
         entity.password(encode);
 
         Teacher saved = teacherRepo.save(entity);
